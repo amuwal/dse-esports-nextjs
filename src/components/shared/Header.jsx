@@ -115,7 +115,7 @@ function PcHeader({ router }) {
 
 function MobileHeader({ router }) {
   const [sidebarActive, setSidebarActive] = useState(false);
-  const sidebarStyles = `fixed z-10 w-96 h-screen bg-gray-800 transition-all duration-300 flex flex-col items-center pt-10 gap-10`;
+  const sidebarStyles = `fixed z-10 w-[85vw] h-screen bg-gray-800 transition-all duration-300 flex flex-col items-center pt-10 gap-10 sm:w-96`;
   const sidebarButtonStyles =
     "h-14 flex items-center justify-center w-40 text-black bg-[#1defe9ff] rounded transition-all duration-200 text-lg font-bold uppercase hover:scale-105";
   const sidebarLinkStyles =
