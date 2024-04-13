@@ -39,7 +39,6 @@ function PcHeader({ router }) {
   const linkStyles = `chakra-peth px-[20px] py-[12px] rounded-[5px] text-[16px] font-bold uppercase bg-transparent hover:bg-[#1defe9ff] hover:!text-black`;
   const headerButtonStyles =
     "h-14 flex items-center justify-center w-40 text-black bg-[#1defe9ff] rounded transition-all duration-200 text-lg font-bold uppercase hover:scale-105";
-  console.log("routerpathname:", usePathname());
   return (
     <div className="chakra-peth hidden lg:flex">
       <div className="my-[20px] mx-[80px] h-[80px] w-full flex items-center justify-between">
