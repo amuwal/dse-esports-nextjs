@@ -2,17 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import logo from "../../../public/dse-logo.png";
 import styled from "styled-components";
+import { FaBars, FaWindowClose } from "react-icons/fa";
 
 export default function Header() {
+  const router = useRouter();
   return (
     <>
-      <PcHeader usePathname={usePathname} />
-      <MobileHeader usePathname={usePathname} />
+      <PcHeader router={router} usePathname={usePathname} />
+      <MobileHeader router={router} usePathname={usePathname} />
     </>
   );
 }
@@ -124,9 +126,9 @@ function MobileHeader({ router }) {
       <div className="chakra-peth flex lg:hidden">
         <div className="my-[20px] mx-[30px] h-[80px] w-full flex items-center justify-between sm:mx-[80px]">
           <div className="h-full">
-            <Link href="/">
-              {/* <img className="h-[100%] w-auto" src="/dse-logo.png" alt="Logo" /> */}
-            </Link>
+            <div onClick={() => router.push("/")}>
+              <img className="h-[80px] w-auto" src="/dse-logo.png" alt="Logo" />
+            </div>
           </div>
           <div
             onClick={() => {
@@ -134,7 +136,7 @@ function MobileHeader({ router }) {
             }}
             className="text-white cursor-pointer"
           >
-            open
+            <FaBars />
           </div>
         </div>
         <div
@@ -148,12 +150,13 @@ function MobileHeader({ router }) {
             }}
             className="absolute top-12 right-5 text-white"
           >
-            close
+            <FaWindowClose />
           </button>
 
           <div className="h-[70px]">
-            <img className="h-[100%] w-auto" src="/dse-logo.png" alt="Logo" />
-            <Link href="/"></Link>
+            <div onClick={() => router.push("/")}>
+              <img className="h-[70px] w-auto" src="/dse-logo.png" alt="Logo" />
+            </div>
           </div>
           <div className="w-full pl-[5px] flex flex-col">
             <Link href="/" className={sidebarLinkStyles}>

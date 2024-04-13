@@ -7,7 +7,11 @@ export async function GET(req) {
     const eventsCollection = collection(db, "events");
     const q = query(
       eventsCollection,
-      where("displaySections", "array-contains", "home")
+      where("displaySections", "array-contains-any", [
+        "featured",
+        "top",
+        "past",
+      ])
     );
     const querySnapshot = await getDocs(q);
     const homePageEvents = querySnapshot.docs.map((doc) => {

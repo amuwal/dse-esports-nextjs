@@ -4,19 +4,16 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 
 export async function GET(req) {
   try {
-    const eventsCollection = collection(db, "events");
-    const q = query(
-      eventsCollection,
-      where("displaySections", "array-contains", "home")
-    );
+    const achievementsCollection = collection(db, "achievements");
+    const q = query(achievementsCollection);
     const querySnapshot = await getDocs(q);
-    const homePageEvents = querySnapshot.docs.map((doc) => {
+    const achievements = querySnapshot.docs.map((doc) => {
       const data = doc.data();
       return { id: doc.id, ...data };
     });
-    return NextResponse.json(homePageEvents);
+    return NextResponse.json(achievements);
   } catch (error) {
-    console.error("Error fetching homepage events:", error);
+    console.error("Error fetching achievements:", error);
     return NextResponse.error();
   }
 }
